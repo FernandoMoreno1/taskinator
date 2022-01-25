@@ -1,19 +1,41 @@
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var taskFormHandler = function(event) {
+var taskFormHandler = function (event) {
   event.preventDefault();
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
   // package up data as an object
   var taskDataObj = {
-      name: taskNameInput,
-      type: taskTypeInput
+    name: taskNameInput,
+    type: taskTypeInput
   };
 
   // send it as an argument to createTaskEl
   createTaskEl(taskDataObj);
+
+  // check if input values are empty strings
+// check if input values are empty strings
+
+
+      if (false) {
+      // this will not run because false is not true
+        console.log("Is false true? No.");
+      }
+      
+      if (3 === 10 || "a" === "a") {
+      // this will run because at least one of the conditions is true
+        console.log("Does 3 equal 10? No.");
+        console.log("Does the letter 'a' equal the letter 'a'? Yes.");
+      }
+      
+      if (3 === 10 && "a" === "a") {
+      // this will not run because both conditions have to be true to run
+        console.log("Does 3 equal 10? No.");
+        console.log("Does the letter 'a' equal the letter 'a'? Yes.");
+      }
+      formEl.reset();
 };
 
 var createTaskEl = function (taskDataObj) {
