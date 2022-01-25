@@ -3,39 +3,27 @@ var tasksToDoEl = document.querySelector("#tasks-to-do");
 
 var taskFormHandler = function (event) {
   event.preventDefault();
-  var taskNameInput = document.querySelector("input[name='task-name']").value;
+  var taskNameInput = document.querySelector("input[name='task-name'").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
-  // package up data as an object
+  // check if inputs are empty (validate)
+  if (taskNameInput === "" || taskTypeInput === "") {
+    alert("You need to fill out the task form!");
+    return false;
+  }
+
+  formEl.reset();
+
+  // reset form fields for next task to be entered
+  document.querySelector("input[name='task-name']").value = "";
+  document.querySelector("select[name='task-type']").selectedIndex = 0;
+
   var taskDataObj = {
     name: taskNameInput,
     type: taskTypeInput
   };
 
-  // send it as an argument to createTaskEl
   createTaskEl(taskDataObj);
-
-  // check if input values are empty strings
-// check if input values are empty strings
-
-
-      if (false) {
-      // this will not run because false is not true
-        console.log("Is false true? No.");
-      }
-      
-      if (3 === 10 || "a" === "a") {
-      // this will run because at least one of the conditions is true
-        console.log("Does 3 equal 10? No.");
-        console.log("Does the letter 'a' equal the letter 'a'? Yes.");
-      }
-      
-      if (3 === 10 && "a" === "a") {
-      // this will not run because both conditions have to be true to run
-        console.log("Does 3 equal 10? No.");
-        console.log("Does the letter 'a' equal the letter 'a'? Yes.");
-      }
-      formEl.reset();
 };
 
 var createTaskEl = function (taskDataObj) {
@@ -49,7 +37,9 @@ var createTaskEl = function (taskDataObj) {
   taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
   listItemEl.appendChild(taskInfoEl);
 
-  // add entire list item to list
+  console.dir(listItemEl);
+
+  // add list item to list
   tasksToDoEl.appendChild(listItemEl);
 };
 
